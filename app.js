@@ -186,7 +186,6 @@ function showNextOrStart() {
 // === Listeners écran distribution ===
 $("btn-see-word").addEventListener("click", showWordScreen);
 $("btn-word-seen").addEventListener("click", showNextOrStart);
-$("btn-next-player").addEventListener("click", showPassScreen);
 $("btn-start-vote").addEventListener("click", showVoteScreen);
 
 /* =========================================================

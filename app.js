@@ -166,8 +166,7 @@ function showWordScreen() {
   $("word-display").textContent = player.word;
   showScreen("screen-word");
 }
-
-/** C : Écran neutre entre 2 joueurs, ou démarrage du jeu */
+/** Passe au joueur suivant, ou démarre le jeu si tous ont vu leur mot */
 function showNextOrStart() {
   state.currentIndex++;
 
@@ -178,9 +177,11 @@ function showNextOrStart() {
     $("first-player-name").textContent = starter.name;
     showScreen("screen-first");
   } else {
-    showScreen("screen-next");
+    // on enchaîne directement sur "Donner le téléphone à X"
+    showPassScreen();
   }
 }
+
 
 // === Listeners écran distribution ===
 $("btn-see-word").addEventListener("click", showWordScreen);

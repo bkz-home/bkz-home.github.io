@@ -2,35 +2,171 @@
    UNDERCOVER - Jeu local sur un seul téléphone
    ========================================================= */
 
-// === LISTE DES DUOS DE MOTS ===
-// Format : [mot_principal, mot_undercover]
-// Modifiable librement.
-const WORD_PAIRS = [
-  ["chat", "chien"],
-  ["pizza", "burger"],
-  ["soleil", "lune"],
-  ["café", "thé"],
-  ["vélo", "moto"],
-  ["mer", "océan"],
-  ["livre", "magazine"],
-  ["pomme", "poire"],
-  ["football", "rugby"],
-  ["guitare", "piano"],
-  ["train", "métro"],
-  ["roi", "reine"],
-  ["docteur", "infirmier"],
-  ["bière", "vin"],
-  ["étoile", "planète"],
-  ["chaise", "tabouret"],
-  ["fleur", "arbre"],
-  ["neige", "pluie"],
-  ["acteur", "chanteur"],
-  ["pizza", "tarte"],
+/* =========================================================
+   DUOS DE MOTS PAR CATÉGORIE
+   ========================================================= */
+const WORD_PAIRS = {
+  classique: [
+    ["chat", "chien"],
+    ["lion", "tigre"],
+    ["cheval", "âne"],
+    ["lapin", "hamster"],
+    ["dauphin", "requin"],
+    ["aigle", "faucon"],
+    ["abeille", "guêpe"],
+    ["crocodile", "alligator"],
+    ["pigeon", "moineau"],
+    ["loup", "renard"],
+    ["pizza", "burger"],
+    ["pâtes", "riz"],
+    ["frites", "chips"],
+    ["café", "thé"],
+    ["chocolat", "vanille"],
+    ["pain", "brioche"],
+    ["beurre", "margarine"],
+    ["sucre", "sel"],
+    ["citron", "orange"],
+    ["fraise", "framboise"],
+    ["glace", "sorbet"],
+    ["crêpe", "gaufre"],
+    ["sushi", "maki"],
+    ["kebab", "tacos"],
+    ["coca", "pepsi"],
+    ["téléphone", "tablette"],
+    ["livre", "magazine"],
+    ["stylo", "crayon"],
+    ["voiture", "moto"],
+    ["train", "métro"],
+    ["avion", "hélicoptère"],
+    ["lit", "canapé"],
+    ["douche", "bain"],
+    ["lunettes", "lentilles"],
+    ["montre", "bracelet"],
+    ["sac", "valise"],
+    ["clé", "cadenas"],
+    ["soleil", "lune"],
+    ["mer", "océan"],
+    ["montagne", "colline"],
+    ["forêt", "jungle"],
+    ["plage", "désert"],
+    ["rivière", "fleuve"],
+    ["pluie", "neige"],
+    ["étoile", "planète"],
+    ["jardin", "parc"],
+    ["ville", "village"],
+    ["football", "rugby"],
+    ["tennis", "badminton"],
+    ["basket", "handball"],
+    ["natation", "plongée"],
+    ["boxe", "MMA"],
+    ["ski", "snowboard"],
+    ["vélo", "trottinette"]
+  ],
+
+  popculture: [
+    ["Harry Potter", "Le Seigneur des Anneaux"],
+    ["Batman", "Superman"],
+    ["Iron Man", "Captain America"],
+    ["Thor", "Hulk"],
+    ["Spider-Man", "Deadpool"],
+    ["Game of Thrones", "House of the Dragon"],
+    ["Breaking Bad", "Better Call Saul"],
+    ["Stranger Things", "Dark"],
+    ["La Casa de Papel", "Lupin"],
+    ["Peaky Blinders", "Narcos"],
+    ["Squid Game", "Alice in Borderland"],
+    ["The Witcher", "Vikings"],
+    ["Joker", "Dark Knight"],
+    ["Avatar", "Titanic"],
+    ["Inception", "Interstellar"],
+    ["Avengers", "Justice League"],
+    ["Star Wars", "Star Trek"],
+    ["Frozen", "Raiponce"],
+    ["Fortnite", "PUBG"],
+    ["Minecraft", "Roblox"],
+    ["FIFA", "PES"],
+    ["GTA", "Red Dead"],
+    ["Mario", "Sonic"],
+    ["Zelda", "Pokémon"],
+    ["Call of Duty", "Battlefield"],
+    ["League of Legends", "Dota"],
+    ["Valorant", "CS:GO"],
+    ["Among Us", "Fall Guys"],
+    ["Instagram", "Snapchat"],
+    ["TikTok", "Reels"],
+    ["YouTube", "Twitch"],
+    ["WhatsApp", "Telegram"],
+    ["Netflix", "Prime Video"],
+    ["Spotify", "Deezer"],
+    ["Uber", "Bolt"],
+    ["Airbnb", "Booking"],
+    ["iPhone", "Samsung"],
+    ["Mac", "PC"],
+    ["Google", "Bing"],
+    ["ChatGPT", "Gemini"],
+    ["Booba", "Kaaris"],
+    ["PNL", "Nekfeu"],
+    ["Damso", "Orelsan"],
+    ["Jul", "Naps"],
+    ["Aya Nakamura", "Wejdene"],
+    ["Ninho", "Niska"],
+    ["SCH", "Lacrim"],
+    ["Stromae", "Angèle"]
+  ],
+
+  france: [
+    ["baguette", "croissant"],
+    ["camembert", "brie"],
+    ["raclette", "fondue"],
+    ["Paris", "Marseille"],
+    ["Tour Eiffel", "Arc de Triomphe"],
+    ["TGV", "RER"],
+    ["Carrefour", "Leclerc"],
+    ["McDo", "Burger King"],
+    ["Renault", "Peugeot"],
+    ["PSG", "OM"],
+    ["Mbappé", "Griezmann"],
+    ["Zidane", "Henry"]
+  ],
+
+  maroc: [
+    ["tajine", "couscous"],
+    ["msemen", "baghrir"],
+    ["harira", "bissara"],
+    ["thé à la menthe", "café noss-noss"],
+    ["pastilla", "rfissa"],
+    ["chebakia", "briouates"],
+    ["zaalouk", "taktouka"],
+    ["khobz", "batbout"],
+    ["Casablanca", "Rabat"],
+    ["Marrakech", "Fès"],
+    ["Tanger", "Agadir"],
+    ["Chefchaouen", "Essaouira"],
+    ["Atlas", "Rif"],
+    ["djellaba", "kaftan"],
+    ["babouches", "belgha"],
+    ["hammam", "spa"],
+    ["souk", "médina"],
+    ["Raja", "Wydad"],
+    ["Hakimi", "Ziyech"],
+    ["dirham", "euro"],
+    ["3la slamtek", "bsahtek"]
+  ]
+};
+
+/** Métadonnées d'affichage des catégories (label + emoji) */
+const CATEGORIES = [
+  { id: "classique",  label: "Classique",   emoji: "🎯" },
+  { id: "popculture", label: "Pop Culture", emoji: "🎬" },
+  { id: "france",     label: "France",      emoji: "🇫🇷" },
+  { id: "maroc",      label: "Maroc",       emoji: "🇲🇦" }
 ];
+
 
 // === ÉTAT GLOBAL DU JEU ===
 const state = {
   players: [],            // [{ name, word, isUndercover }]
+  selectedCategories: ["classique", "popculture", "france", "maroc"], // toutes par défaut
   currentIndex: 0,        // index du joueur en cours de distribution
   mainWord: "",
   undercoverWord: "",
@@ -62,6 +198,54 @@ const playerInput = $("player-input");
 const playersList = $("players-list");
 const btnAdd = $("btn-add-player");
 const btnStart = $("btn-start");
+/** Génère les boutons de catégories sur l'écran d'accueil */
+function renderCategories() {
+  const container = $("categories-list");
+  container.innerHTML = "";
+
+  CATEGORIES.forEach(cat => {
+    const btn = document.createElement("button");
+    btn.className = "category-btn";
+    btn.textContent = `${cat.emoji} ${cat.label}`;
+    btn.dataset.id = cat.id;
+
+    if (state.selectedCategories.includes(cat.id)) {
+      btn.classList.add("active");
+    }
+
+    btn.addEventListener("click", () => toggleCategory(cat.id));
+    container.appendChild(btn);
+  });
+
+  updateStartButton();
+}
+
+/** Active/désactive une catégorie */
+function toggleCategory(id) {
+  const idx = state.selectedCategories.indexOf(id);
+  if (idx >= 0) {
+    state.selectedCategories.splice(idx, 1);
+  } else {
+    state.selectedCategories.push(id);
+  }
+  renderCategories();
+}
+
+/** Retourne tous les duos des catégories sélectionnées */
+function getActiveWordPairs() {
+  const pairs = [];
+  state.selectedCategories.forEach(catId => {
+    if (WORD_PAIRS[catId]) pairs.push(...WORD_PAIRS[catId]);
+  });
+  return pairs;
+}
+
+/** Met à jour l'état du bouton "Commencer" */
+function updateStartButton() {
+  const enoughPlayers   = state.players.length >= 3;
+  const hasCategory     = state.selectedCategories.length > 0;
+  $("btn-start").disabled = !(enoughPlayers && hasCategory);
+}
 
 /** Ajoute un joueur à la liste */
 function addPlayer() {
@@ -102,7 +286,7 @@ function renderPlayers() {
   });
 
   // active "Commencer" si au moins 3 joueurs
-  btnStart.disabled = state.players.length < 3;
+  updateStartButton();
 }
 
 /** Échappe le HTML pour éviter toute injection */
@@ -131,7 +315,8 @@ btnStart.addEventListener("click", startGame);
 
 function startGame() {
   // 1. choisir un duo de mots
-  const pair = WORD_PAIRS[randInt(WORD_PAIRS.length)];
+  const pairs = getActiveWordPairs();
+  const pair  = pairs[randInt(pairs.length)];
   state.mainWord = pair[0];
   state.undercoverWord = pair[1];
 
@@ -244,6 +429,7 @@ $("btn-replay").addEventListener("click", () => {
 $("btn-home").addEventListener("click", () => {
   // reset complet
   state.players = [];
+  renderCategories();
   renderPlayers();
   showScreen("screen-home");
 });

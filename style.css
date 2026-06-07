@@ -1,0 +1,217 @@
+/* === RESET MINIMAL === */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html, body {
+  height: 100%;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background: #1a1a2e;
+  color: #f0f0f0;
+  overflow-x: hidden;
+}
+
+/* === CONTENEUR PRINCIPAL === */
+#app {
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+}
+
+/* === GESTION DES ÉCRANS === */
+.screen {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 480px;
+  padding: 32px 24px;
+  text-align: center;
+  gap: 20px;
+}
+
+.screen.active {
+  display: flex;
+}
+
+/* === TYPOGRAPHIE === */
+h1 {
+  font-size: 2.4rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+h2 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.subtitle, .hint {
+  font-size: 1rem;
+  color: #aaa;
+}
+
+.word {
+  font-size: 3.5rem;
+  font-weight: 800;
+  color: #ffcc66;
+  padding: 24px;
+  word-break: break-word;
+}
+
+/* === FORMULAIRE D'AJOUT === */
+.input-row {
+  display: flex;
+  gap: 8px;
+  width: 100%;
+}
+
+#player-input {
+  flex: 1;
+  padding: 16px;
+  font-size: 1.1rem;
+  border: 2px solid #333;
+  background: #2a2a3e;
+  color: #fff;
+  border-radius: 12px;
+  outline: none;
+}
+
+#player-input:focus {
+  border-color: #6c63ff;
+}
+
+/* === LISTE DES JOUEURS === */
+#players-list {
+  list-style: none;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+#players-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 18px;
+  background: #2a2a3e;
+  border-radius: 12px;
+  font-size: 1.1rem;
+}
+
+#players-list .remove {
+  background: transparent;
+  color: #ff6b6b;
+  border: none;
+  font-size: 1.4rem;
+  cursor: pointer;
+  padding: 0 8px;
+}
+
+/* === BOUTONS === */
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  transition: transform 0.1s ease, opacity 0.2s ease;
+}
+
+button:active:not(:disabled) {
+  transform: scale(0.97);
+}
+
+.btn-primary {
+  width: 100%;
+  padding: 20px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  background: #6c63ff;
+  color: white;
+  border-radius: 14px;
+}
+
+.btn-primary:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.btn-secondary {
+  padding: 16px 20px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  background: #2a2a3e;
+  color: #fff;
+  border-radius: 12px;
+}
+
+#btn-add-player {
+  min-width: 56px;
+  font-size: 1.6rem;
+}
+
+/* === BOUTONS DE VOTE === */
+#vote-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+}
+
+.vote-btn {
+  padding: 20px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  background: #2a2a3e;
+  color: #fff;
+  border-radius: 14px;
+  border: 2px solid transparent;
+}
+
+.vote-btn:active {
+  border-color: #6c63ff;
+}
+
+/* === ÉCRAN RÉSULTATS === */
+.result-text {
+  font-size: 1.2rem;
+  line-height: 1.5;
+  color: #ddd;
+}
+
+.words-reveal {
+  width: 100%;
+  background: #2a2a3e;
+  padding: 20px;
+  border-radius: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  text-align: left;
+}
+
+.words-reveal p {
+  font-size: 1.05rem;
+}
+
+.words-reveal .label {
+  color: #999;
+}
+
+.words-reveal strong {
+  color: #ffcc66;
+}
+
+/* === ADAPTATIONS PETITS ÉCRANS === */
+@media (max-height: 600px) {
+  h1 { font-size: 2rem; }
+  .word { font-size: 2.8rem; }
+  .screen { padding: 20px 16px; }
+}
